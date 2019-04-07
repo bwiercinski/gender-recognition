@@ -11,10 +11,9 @@ from process_image import get_image, process_image
 
 if __name__ == "__main__":
     print("Load data")
-    # with open("data/test_data/t_1000_200.pkl", "rb") as file:
-    #     ((train_labels, train_data), (test_labels, test_data)) = pickle.load(file)
-
-    ((train_labels, train_data), (test_labels, test_data)) = get_test_data(1000, 200)
+    with open("data/test_data/t_1000_200.pkl", "rb") as file:
+        ((train_labels, train_data), (test_labels, test_data)) = pickle.load(file)
+    # ((train_labels, train_data), (test_labels, test_data)) = get_test_data(1000, 200)
 
     print("Create model")
     model = keras.Sequential([
@@ -37,11 +36,11 @@ if __name__ == "__main__":
     print("Test accuracy:", test_acc)
 
     print("My tests")
-    kasias = [
+    my_image = [
+        process_image(get_image("my_image/" + "Bartek_0001.jpg"), crop=False),
         process_image(get_image("my_image/" + "Kasia_0001.jpg"), crop=False),
         process_image(get_image("my_image/" + "Kasia_0002.jpg"), crop=False)
     ]
-    predictions = model.predict(np.array(kasias))
+    predictions = model.predict(np.array(my_image))
 
-    print("Kasia prediction:", np.argmax(predictions[0]))
-    print("Kasia prediction:", np.argmax(predictions[1]))
+    print("Kasia prediction:", np.argmax(predictions, axis=1))
