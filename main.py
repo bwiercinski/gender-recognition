@@ -19,7 +19,7 @@ if __name__ == "__main__":
     model = keras.Sequential([
         keras.layers.Flatten(input_shape=train_data[0].shape),
         keras.layers.Dense(128, activation=tf.nn.relu6),
-        keras.layers.Dense(10, activation=tf.nn.softmax)
+        keras.layers.Dense(2, activation=tf.nn.softmax)
     ])
 
     print("Compile model")
@@ -28,7 +28,7 @@ if __name__ == "__main__":
                   metrics=["accuracy"])
 
     print("Fit model")
-    model.fit(train_data, train_labels, epochs=5)
+    model.fit(train_data, train_labels, epochs=10)
 
     print("Evaluate model")
     test_loss, test_acc = model.evaluate(test_data, test_labels)

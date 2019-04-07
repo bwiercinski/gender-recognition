@@ -37,5 +37,5 @@ def save_to_pickle(my_object, file_name):
 
 if __name__ == "__main__":
     save_to_pickle(get_test_data(1000, 200), "data/test_data/t_1000_200.pkl")
-    save_to_pickle(get_test_data(2000, 300), "data/test_data/t_2000_300.pkl")
+    save_to_pickle(get_test_data(2000, 400), "data/test_data/t_2000_300.pkl")
     save_to_pickle(get_test_data(1500, 300), "data/test_data/t_1500_300.pkl")
